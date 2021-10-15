@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ProcurementSchema = new mongoose.Schema({
-        purchaseNumber:{
+        purchaseOrderNumber:{
             type: Number,
             required: true
         },
@@ -25,4 +25,4 @@ const ProcurementSchema = new mongoose.Schema({
         
 });
 
-module.exports= mongoose.model('Procurement', ProcurementSchema);
+module.exports= mongoose.model("Procurement", ProcurementSchema);
