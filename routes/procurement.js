@@ -38,6 +38,8 @@ router.post('/addNewPfi', async (req,res) => {
         issuedDate: req.body.date
                 
         });
+
+           
      
         console.log(newPfi);
        
