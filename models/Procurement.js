@@ -21,7 +21,7 @@ const ProcurementSchema = new mongoose.Schema({
         date: {         
             type:String,
            // default: moment().tz("America/").format('dddd, MMMM Do YYYY, h:mm:ss a') 
-            default: moment().tz("Zambia/Lusaka").format('dddd, MMMM Do YYYY, h:mm:ss a')         
+            default: moment().tz("Africa/Accra").format('dddd, MMMM Do YYYY, h:mm:ss a')         
         }
         
         
