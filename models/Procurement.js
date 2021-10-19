@@ -1,3 +1,4 @@
+const moment = require('moment');
 const mongoose = require('mongoose');
 
 const ProcurementSchema = new mongoose.Schema({
@@ -18,8 +19,9 @@ const ProcurementSchema = new mongoose.Schema({
             required: true
         },
         date: {
-            type: Date,
-            default: Date.now
+            type: moment(),
+            required: true
+            
         }
         
         
