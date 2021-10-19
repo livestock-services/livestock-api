@@ -19,7 +19,7 @@ const ProcurementSchema = new mongoose.Schema({
         },
         date: {
             type: Date,
-            default: Date.UTC
+            default: Date.now
         }
         
         
