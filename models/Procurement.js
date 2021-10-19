@@ -19,8 +19,14 @@ const ProcurementSchema = new mongoose.Schema({
             required: true
         },
         date: {
-            type: moment(),
-            required: true
+           ISO:{
+               type:Date,
+               default: Date.now()
+           },
+           String:{
+            type:String,
+            default: moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
+        }
             
         }
         
