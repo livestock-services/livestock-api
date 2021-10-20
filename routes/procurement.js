@@ -36,7 +36,7 @@ router.post('/addNewPfi', async (req,res) => {
         supplierName: req.body.supplierName,
         supplierEmail: req.body.supplierEmail,
         issuedDate: req.body.date,
-        status: req.body.status.sent
+        status: req.body.status
                 
         });
 
