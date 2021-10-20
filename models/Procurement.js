@@ -26,14 +26,10 @@ const ProcurementSchema = new mongoose.Schema({
         },
 
         status:{
-            sent:{
+            
                 type: String,
                 default:'Sent to Compliance'
-            },
-            pending:{
-                type: String,
-                default:'Pending'
-            }
+           
            
         }
         
