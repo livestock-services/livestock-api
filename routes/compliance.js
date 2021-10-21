@@ -49,8 +49,8 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
        
        
        pfiNumber: req.body.pfiNumber,
-       reasonForAmendment:req.body.reasonForAmendment
-               
+       reasonForAmendment:req.body.reasonForAmendment,
+       amendmentDate: req.body.date        
        });
 
           

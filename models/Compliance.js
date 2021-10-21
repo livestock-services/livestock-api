@@ -8,10 +8,15 @@ const AmendedPermitApplicationsSchema = new mongoose.Schema({
                 type: Number,
                 required: true
             },
-            
+
         reasonForAmendment:{
             type: String,
             required: true
+        },
+
+        date:{
+            type: String,
+            default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
         }
 
       
