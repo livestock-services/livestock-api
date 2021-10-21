@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);
-app.use('/compliance', complianceRoute);
+app.use('/comp/permits', complianceRoute);
 app.use('/finance', financeRoute);
 
 
