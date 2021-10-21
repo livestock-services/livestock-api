@@ -61,7 +61,7 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
         console.log(savedAmendedPermitApplication);
             res.json({
                
-                Message: 'Successfully added a new PFI !',
+                Message: 'Successfully added a new amended permit application !',
                 data: savedAmendedPermitApplication
             });
         } catch (err) {
