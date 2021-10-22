@@ -34,7 +34,7 @@ const ProcurementSchema = new mongoose.Schema({
 
                compliance:{
                 type: String,
-                default:'Received to Procurement'
+                default:'Received from Procurement'
                }
            
            
