@@ -27,8 +27,15 @@ const ProcurementSchema = new mongoose.Schema({
 
         status:{
             
+               procurement:{
                 type: String,
                 default:'Sent to Compliance'
+               },
+
+               compliance:{
+                type: String,
+                default:'Received to Procurement'
+               }
            
            
         }
