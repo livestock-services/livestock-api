@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Compliance = require('../models/Compliance');
+const { APAs } = require("../models/Compliance");
+const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
 router.get('/', async (req,res)=>{
   
@@ -28,7 +30,7 @@ router.get('/allCompReports', async (req,res)=>{
  //GET ALL AMENDED PERMIT APPLICATIONS
 router.get('/allAmendedPermitApplications', async (req,res)=>{
     try {
-        const allAmendedPermitApplications = await Compliance.find();
+        const allAmendedPermitApplications = await APAs.find();
         res.json({
 
             status: 'Successfully retreived all amended permit applications!',
@@ -45,7 +47,7 @@ router.get('/allAmendedPermitApplications', async (req,res)=>{
 router.post('/addNewAmendedPermitApplication', async (req,res) => {
     
     try {  
-       const newAmendedPermitApplication = new Compliance({
+       const newAmendedPermitApplication = new APAs({
        
        
        pfiNumber: req.body.pfiNumber,
@@ -68,5 +70,55 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
              res.json({ message: err })
         }
 });
+
+
+
+
+
+
+ //GET ALL PERMIT APPLICATIONS
+ router.get('/allPermitApplications', async (req,res)=>{
+    try {
+        const allPermitApplications = await PAs.find();
+        res.json({
+
+            status: 'Successfully retreived all amended permit applications!',
+            data: allPermitApplications
+            
+        });
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+ //CREATE NEW PERMIT APPLICATION
+router.post('/addNewPermitApplication', async (req,res) => {
+    
+    try {  
+       const newPermitApplication = new PAs({
+       
+       
+       pfiNumber: req.body.pfiNumber,
+       authBody:req.body.authBody,
+       permitApplicationAmount: req.body.permitApplicationAmount        
+       });
+
+          
+    
+       console.log( newPermitApplication );
+      
+      const savedPermitApplication = await newPermitApplication.save();
+        console.log(savedPermitApplication);
+            res.json({
+               
+                Message: 'Successfully added a new permit application !',
+                data: savedPermitApplication
+            });
+        } catch (err) {
+             res.json({ message: err })
+        }
+});
+
 
  module.exports= router
