@@ -82,7 +82,7 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
         const allPermitApplications = await PAs.find();
         res.json({
 
-            status: 'Successfully retreived all amended permit applications!',
+            status: 'Successfully retreived all permit applications!',
             data: allPermitApplications
             
         });
