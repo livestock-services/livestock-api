@@ -44,10 +44,23 @@ const PermitApplications = new mongoose.Schema({
         required: true
     },
 
-date:{
-    type: String,
-    default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
-}
+    date:{
+        type: String,
+        default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+    }, 
+
+    permitStatus:{
+        pending:{
+            type: String,
+            default: "Pending"
+        },
+
+        approved:{
+            type: String,
+            default: "Approved"
+        }
+    }
+
 
 })
 
