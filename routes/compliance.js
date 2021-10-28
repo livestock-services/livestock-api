@@ -120,5 +120,25 @@ router.post('/addNewPermitApplication', async (req,res) => {
         }
 });
 
+//UPDATE A PERMIT APPLICATION
+router.put('/allPermitApplications/:id', async (req,res,next )=>{
+    try {
+        const approvedPA = await PAs.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
+            PAs.findOne({ _id: req.params.id }).then(function(){
+                res.json({
+
+                    status: 'Successfully approved this permit application!',
+                    data: approvedPA
+                    
+                })
+            })
+        })
+       
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
 
  module.exports= router

@@ -50,15 +50,11 @@ const PermitApplications = new mongoose.Schema({
     }, 
 
     permitStatus:{
-        pending:{
+       
             type: String,
             default: "Pending"
-        },
+        
 
-        approved:{
-            type: String,
-            default: "Approved"
-        }
     }
 
 
