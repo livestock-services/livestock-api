@@ -36,9 +36,9 @@ router.get('/allUsers', async (req,res)=>{
        const user = await User.findOne({ email: req.body.email });
        if(!user) return res.status(400).send('Email is not found');
       
-       //CHECK FOR NAME      
-        const username = await User.findOne({ name: req.body.name });
-       if(!username) return res.status(400).send('Name is not found');
+    //    //CHECK FOR NAME      
+    //     const username = await User.findOne({name: req.body.name });
+    //    if(!username) return res.status(400).send('Name is not found');
 
       //CHECK IF USER PASSWORD MATCHES EMAIL
     const validPass = await bcrypt.compare(req.body.password, user.password);
@@ -47,7 +47,7 @@ router.get('/allUsers', async (req,res)=>{
 
     //CREATE AND ASSIGN A TOKEN
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token',token).send({ message: 'Logged In!', NAME:user.name, ID: user._id, token: token});
+    res.header('auth-token',token).send({ message: 'Logged In!', name:user.name, id: user._id, token: token});
 
       res.send('Logged In!');
     
@@ -91,7 +91,8 @@ router.get('/allUsers', async (req,res)=>{
           
               res.json({
                  
-                  status: 'Successfully Registered User!'
+                  status: 'Successfully Registered User!',
+                  message: savedUser
               });
           } catch (err) {
                res.json({ message: err })

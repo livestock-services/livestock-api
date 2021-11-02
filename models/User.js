@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
+
+const tz = require ('moment-timezone')
 
 const UserSchema = new mongoose.Schema({
     name:{
@@ -20,10 +23,14 @@ const UserSchema = new mongoose.Schema({
         min:8 
     },
 
-    date:{
-        type:Date,
-        default: Date.now
+    date: {         
+        type:String,
+      // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+      default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+      
+      // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
     }
+
 });
 
 module.exports= mongoose.model('Users', UserSchema);
