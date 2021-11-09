@@ -23,12 +23,25 @@ const UserSchema = new mongoose.Schema({
         min:8 
     },
     
-    age:{
-        type: String,
-        required: true,
-        max:30,
-        min:3 ,
-       // default: "admin"
+    role:{
+             admin:{
+                type: String,
+                default: 'admin'
+             },
+             proc:{
+                type: String,
+                default: 'procurement'
+             },
+             comp:{
+                type: String,
+                default: 'compliance'
+             },
+             fin:{
+                type: String,
+                default: 'finance'
+             }
+              
+        
         
     },
 
