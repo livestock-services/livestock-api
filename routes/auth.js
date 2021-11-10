@@ -28,6 +28,28 @@ router.get('/allUsers', async (req,res)=>{
  });
 
 
+ //GET  USER
+router.get('/User/:id', async (req,res)=>{
+  try {
+      
+      const user = await User.findById({_id: req.params.id});
+      res.json({
+
+          status: 'Successfully retreived user!',
+          message: user
+         
+      })
+
+    
+
+      
+
+  } catch (error) {
+      res.json({ message: error})
+  }
+});
+
+
  
   //LOGIN  USERS
     router.post('/login',async (req,res)=>{
