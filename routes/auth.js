@@ -18,8 +18,10 @@ router.get('/allUsers', async (req,res)=>{
         
         const usersAdmin = await User.find();
         res.json({
-            message: usersAdmin, 
-            status: 'Successfully retreived users!'
+
+            status: 'Successfully retreived users!',
+            data: usersAdmin
+           
         });
  
     } catch (error) {
@@ -36,7 +38,7 @@ router.get('/User/:id', async (req,res)=>{
       res.json({
 
           status: 'Successfully retreived user!',
-          message: user
+          data: user
          
       })
 
@@ -129,7 +131,7 @@ router.get('/User/:id', async (req,res)=>{
             res.json({
                
                 status: 'Successfully Registered User!',
-                message: savedUser
+                data: savedUser
             });
         } catch (err) {
              res.json({ message: err })
