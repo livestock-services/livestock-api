@@ -29,17 +29,56 @@ const AmendedPermitApplications = new mongoose.Schema({
 
 
 const PermitApplications = new mongoose.Schema({
+
+    supplierName:{
+        type: String,
+        required: true
+    },
+
+    
     pfiNumber:{
+        type: String,
+        required: true
+    },
+    selectCurrency:{
+        type: String,
+        required: true
+    },
+
+    pfiValue:{
         type: Number,
         required: true
     },
 
     
-    authBody:{
-        type: String,
+    exchangeRate:{
+        type: Number,
         required: true
     },
-    permitApplicationAmount:{
+
+    localCurrency:{
+        type: String,
+       
+
+
+    },
+
+    marketAuthFee:{
+        type: Number,
+        
+    },
+
+    marketNonAuthFee:{
+        type: Number,
+       
+    },
+
+    feeType:{
+        type: String,
+        required:true
+    },
+
+    authBody:{
         type: String,
         required: true
     },
@@ -48,6 +87,14 @@ const PermitApplications = new mongoose.Schema({
         type: String,
         default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
     }, 
+
+
+    permitPaper:{
+        type: Number,
+        required: true
+    },
+
+    
 
     permitStatus:{
        

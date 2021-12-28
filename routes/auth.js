@@ -121,7 +121,7 @@ router.get('/User/:id', async (req,res)=>{
            name: req.body.name,
            email: req.body.email,
            password: hashPassword,
-           role: req.body.age
+           role: req.body.role
        });
     
        console.log(registeredUser);

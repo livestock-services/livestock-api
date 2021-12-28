@@ -99,9 +99,20 @@ router.post('/addNewPermitApplication', async (req,res) => {
        const newPermitApplication = new PAs({
        
        
-       pfiNumber: req.body.pfiNumber,
+       supplierName: req.body.supplierName,
+       pfiNumber:req.body.pfiNumber,
+
+       selectCurrency: req.body.selectCurrency,  
+       pfiValue: req.body.pfiValue,
+       feeType: req.body.feeType,
+       exchangeRate:req.body.exchangeRate,
+       localCurrency: (req.body.pfiValue * req.body.exchangeRate).toFixed(2),
+
+       marketAuthFee:(0.015*((req.body.pfiValue * req.body.exchangeRate))).toFixed(2),
+       marketNonAuthFee: ((0.05*((req.body.pfiValue * req.body.exchangeRate)))+ 750.00).toFixed(2),
+
        authBody:req.body.authBody,
-       permitApplicationAmount: req.body.permitApplicationAmount        
+       permitPaper: req.body.permitPaper       
        });
 
           
@@ -119,6 +130,8 @@ router.post('/addNewPermitApplication', async (req,res) => {
              res.json({ message: err })
         }
 });
+
+
 
 //UPDATE A PERMIT APPLICATION
 router.put('/allPermitApplications/:id', async (req,res,next )=>{
