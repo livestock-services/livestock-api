@@ -46,7 +46,7 @@ const PermitApplications = new mongoose.Schema({
     },
 
     pfiValue:{
-        type: Number,
+        type: String,
         required: true
     },
 
@@ -64,12 +64,12 @@ const PermitApplications = new mongoose.Schema({
     },
 
     marketAuthFee:{
-        type: Number,
+        type: String,
         
     },
 
     marketNonAuthFee:{
-        type: Number,
+        type: String,
        
     },
 
@@ -90,7 +90,7 @@ const PermitApplications = new mongoose.Schema({
 
 
     permitPaper:{
-        type: Number,
+        type: String,
         required: true
     },
 
