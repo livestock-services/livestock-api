@@ -112,7 +112,7 @@ router.post('/addNewPermitApplication', async (req,res) => {
        marketNonAuthFee: ((0.05*((req.body.pfiValue * req.body.exchangeRate)))+ 750.00).toFixed(2),
 
        authBody:req.body.authBody,
-       permitPaper: req.body.permitPaper       
+           
        });
 
           

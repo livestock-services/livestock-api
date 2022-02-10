@@ -89,10 +89,7 @@ const PermitApplications = new mongoose.Schema({
     }, 
 
 
-    permitPaper:{
-        type: Number,
-        required: true
-    },
+  
 
     
 
