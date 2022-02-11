@@ -23,6 +23,9 @@ app.use('/pfis', procurementRoute);
 app.use('/comp/permits', complianceRoute);
 app.use('/finance', financeRoute);
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+  };
 
 
 // Default Route
