@@ -24,7 +24,7 @@ app.use('/comp/permits', complianceRoute);
 app.use('/finance', financeRoute);
 
 app.use(function (req, res, next){
-    res.header("Access-Control-Allow-Origin","*"); //or specify with your domain i.e http://localhost:3000
+    res.header("Access-Control-Allow-Origin","http://localhost:3000"); //or specify with your domain i.e http://localhost:3000
     res.header("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
