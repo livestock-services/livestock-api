@@ -4,8 +4,11 @@ const Compliance = require('../models/Compliance');
 const { APAs } = require("../models/Compliance");
 const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
-router.get('/', async (req,res)=>{
 const cors = require('cors') 
+
+
+router.get('/', async (req,res)=>{
+
     res.send('Compliance Route is grafting!');
 
 });
