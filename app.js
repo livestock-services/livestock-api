@@ -9,7 +9,7 @@ const cors = require('cors');
 const corsOptions ={
     origin:'*', 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:false,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
 
