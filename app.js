@@ -6,28 +6,31 @@ require('dotenv').config();
 
 const cors = require('cors');
 
-const Procurement = require('./models/Procurement');
-const Compliance = require('./models/Compliance');
-const Finance = require('./models/Finance');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 
 const authRoute = require('./routes/auth');
 const procurementRoute = require('./routes/procurement');
 const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
 
-//middleware
+//----------middleware-------------------------
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+app.use(cors(corsOptions));
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);
 app.use('/comp/permits', complianceRoute);
 app.use('/finance', financeRoute);
 
-app.use(function (req, res, next){
-    res.header("Access-Control-Allow-Origin","http://localhost:3000"); //or specify with your domain i.e http://localhost:3000
-    res.header("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
+// app.use(function (req, res, next){
+//     res.header("Access-Control-Allow-Origin","http://localhost:3000"); //or specify with your domain i.e http://localhost:3000
+//     res.header("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// })
 
 // Default Route
 app.get('/', (req,res) =>{
