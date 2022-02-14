@@ -1,8 +1,8 @@
 
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const mongoose = require('mongoose');
+var express = require('express');
+var cors = require('cors');
+var app = express();
+var mongoose = require('mongoose');
 require('dotenv').config();
 
 
@@ -21,6 +21,8 @@ const financeRoute = require('./routes/finance');
 //----------middleware-------------------------
 app.use(cors());
 app.use(express.json());
+
+
  
 // app.use(cors(corsOptions));
 app.use('/auth', authRoute);
