@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
-const cors = require('cors');
+ const cors = require('cors');
 
 // const corsOptions ={
 //     origin:'*', 
@@ -20,6 +20,7 @@ const financeRoute = require('./routes/finance');
 //----------middleware-------------------------
 app.use(cors());
 app.use(express.json());
+ 
 // app.use(cors(corsOptions));
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);

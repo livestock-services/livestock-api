@@ -12,7 +12,7 @@ router.get('/', async (req,res)=>{
 });
 
 //GET ALL PFIs
-router.get('/allFinReports', cors(), async (req,res)=>{
+router.get('/allFinReports', async (req,res)=>{
     try {
         const allFinReports = await Finance.find();
         res.json({
