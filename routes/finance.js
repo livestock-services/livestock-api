@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Finance = require('../models/Finance');
 const verify = require('./verifyToken')
-const cors = require('cors');
+// const cors = require('cors');
 
 
-router.get('/', cors(), async (req,res)=>{
+router.get('/', async (req,res)=>{
   
     res.send('Finance Route is grafting!');
 

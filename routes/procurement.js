@@ -2,17 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Procurement = require('../models/Procurement');
 const verify = require('./verifyToken')
-const cors = require('cors');
+// const cors = require('cors');
 
 
-router.get('/', cors(), async (req,res)=>{
+router.get('/', async (req,res)=>{
   
     res.send('Procurement Route is grafting!');
 
 });
 
 //GET ALL PFIs
-router.get('/allPfis', cors(), async (req,res)=>{
+router.get('/allPfis', async (req,res)=>{
     try {
         const allPfis = await Procurement.find();
         res.json({
@@ -29,7 +29,7 @@ router.get('/allPfis', cors(), async (req,res)=>{
 
 
  //CREATE NEW PFIs
-router.post('/addNewPfi', cors(), async (req,res) => {
+router.post('/addNewPfi', async (req,res) => {
     
      try {  
         const newPfi = new Procurement({
