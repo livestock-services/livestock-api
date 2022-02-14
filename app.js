@@ -4,14 +4,14 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const cors = require('cors');
+//const cors = require('cors');
 
-const corsOptions ={
-    origin:'*', 
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials:false,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+// const corsOptions ={
+//     origin:'*', 
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials:false,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200
+// }
 
 const authRoute = require('./routes/auth');
 const procurementRoute = require('./routes/procurement');
@@ -20,8 +20,8 @@ const financeRoute = require('./routes/finance');
 
 //----------middleware-------------------------
 app.use(express.json());
-//app.use(cors());
-app.use(cors(corsOptions));
+// app.use(cors());
+// app.use(cors(corsOptions));
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);
 app.use('/comp/permits', complianceRoute);
