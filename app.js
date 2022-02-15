@@ -1,17 +1,12 @@
 
 const express = require('express');
-const cors = require('cors');
+const corsMiddleware = require('./cors/cors')
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
 
-// const corsOptions ={
-//     origin:'*', 
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     credentials:false,            //access-control-allow-credentials:true
-//     optionSuccessStatus:200
-// }
+
 
 const authRoute = require('./routes/auth');
 const procurementRoute = require('./routes/procurement');
@@ -19,12 +14,14 @@ const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
 
 //----------middleware-------------------------
-app.use(cors({
-    origin: "http://localhost:3000"
-}));
+
+
+// app.use(cors({
+//     origin: "http://localhost:3000"
+// }));
 
 app.use(express.json());
-
+app.use(corsMiddleware);
 
  
 // app.use(cors(corsOptions));
