@@ -109,10 +109,10 @@ router.post('/addNewPermitApplication', async (req,res) => {
        pfiValue: req.body.pfiValue,
        feeType: req.body.feeType,
        exchangeRate:req.body.exchangeRate,
-       localCurrency: (req.body.pfiValue * req.body.exchangeRate),
+       localCurrency: (req.body.pfiValue * req.body.exchangeRate).toFixed(2),
 
-       marketAuthFee:(0.015*((req.body.pfiValue * req.body.exchangeRate))),
-       marketNonAuthFee: ((0.05*((req.body.pfiValue * req.body.exchangeRate)))+ 750.00),
+       marketAuthFee:(0.015*((req.body.pfiValue * req.body.exchangeRate))).toFixed(2),
+       marketNonAuthFee: ((0.05*((req.body.pfiValue * req.body.exchangeRate)))+ 750.00).toFixed(2),
 
        authBody:req.body.authBody,
            
