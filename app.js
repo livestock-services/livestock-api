@@ -19,7 +19,10 @@ const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
 
 //----------middleware-------------------------
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000"
+}));
+
 app.use(express.json());
 
 
