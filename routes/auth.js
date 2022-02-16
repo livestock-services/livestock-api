@@ -6,14 +6,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cors = require('cors')
 
-router.get('/',cors(), async (req,res)=>{
+router.get('/', async (req,res)=>{
   
        res.send('Authentication Route is grafting');
 
 });
 
 //GET ALL USERS
-router.get('/allUsers', cors(), async (req,res)=>{
+router.get('/allUsers', async (req,res)=>{
     try {
         
         const usersAdmin = await User.find();
@@ -31,7 +31,7 @@ router.get('/allUsers', cors(), async (req,res)=>{
 
 
  //GET  USER
-router.get('/User/:id', cors(), async (req,res)=>{
+router.get('/User/:id', async (req,res)=>{
   try {
       
       const user = await User.findById({_id: req.params.id});
@@ -54,7 +54,7 @@ router.get('/User/:id', cors(), async (req,res)=>{
 
  
   //LOGIN  USERS
-    router.post('/login', cors(), async (req,res)=>{
+    router.post('/login', async (req,res)=>{
 
 
       
@@ -91,7 +91,7 @@ router.get('/User/:id', cors(), async (req,res)=>{
 
 
     //LOGOUT USER
-    router.get('/logout', cors(), async (req,res) => {
+    router.get('/logout', async (req,res) => {
         res.header('auth-token', '', { maxAge: 1 });
         res.redirect('/auth/login').send('Logged Out!');
     });
@@ -101,7 +101,7 @@ router.get('/User/:id', cors(), async (req,res)=>{
 
       //-------------------------REGISTER USERS-----------------------------------------
       //REGISTER USER
-    router.post('/register', cors(), async (req,res)=>{
+    router.post('/register', async (req,res)=>{
       const {error}= registerValidation(req.body);
      if (error) return res.status(400).send(error.details[0].message);
 
