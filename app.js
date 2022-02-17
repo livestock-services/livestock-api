@@ -4,14 +4,18 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
-
-
-
-
 const authRoute = require('./routes/auth');
 const procurementRoute = require('./routes/procurement');
 const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
+
+// const corsOptions ={
+//     origin:'*', 
+//     credentials:true,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200
+// }
+
+
 
 //----------middleware-------------------------
 
@@ -21,10 +25,11 @@ const financeRoute = require('./routes/finance');
 // }));
 
 app.use(express.json());
-app.use(cors({
-    origin:['http://localhost:3000', 'https://livestock-api.herokuapp.com'],
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}));
+app.use(cors());
+// app.use(cors({
+//     origin:['http://localhost:3000', 'https://livestock-api.herokuapp.com'],
+//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+// }));
 
  
 // app.use(cors(corsOptions));
@@ -41,6 +46,12 @@ app.use('/finance', financeRoute);
 
 // Default Route
 app.get('/', (req,res) =>{
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+    
     res.send('Server is Working!')
 });
 
