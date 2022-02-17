@@ -1,6 +1,6 @@
 
 const express = require('express');
-const corsMiddleware = require('./cors/cors')
+const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -21,7 +21,10 @@ const financeRoute = require('./routes/finance');
 // }));
 
 app.use(express.json());
-app.use(corsMiddleware);
+app.use(cors({
+    origin:['http://localhost:3000', 'https://livestock-api.herokuapp.com'],
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 
  
 // app.use(cors(corsOptions));
