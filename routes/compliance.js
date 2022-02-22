@@ -16,12 +16,6 @@ router.get('/', async (req,res)=>{
 //GET ALL PFIs
 router.get('/allCompReports', async (req,res)=>{
 
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET" ); 
-
     try {
         const allCompReports = await Compliance.find();
         res.json({
@@ -39,11 +33,6 @@ router.get('/allCompReports', async (req,res)=>{
 
  //GET ALL AMENDED PERMIT APPLICATIONS
 router.get('/allAmendedPermitApplications', async (req,res)=>{
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET" ); 
 
     try {
         const allAmendedPermitApplications = await APAs.find();
@@ -94,12 +83,6 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
 
  //GET ALL PERMIT APPLICATIONS
  router.get('/allPermitApplications', async (req,res)=>{
-     
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET" ); 
 
     try {
         const allPermitApplications = await PAs.find();

@@ -1,7 +1,7 @@
 
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const authRoute = require('./routes/auth');
@@ -9,54 +9,27 @@ const procurementRoute = require('./routes/procurement');
 const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
 
-// const corsOptions ={
-//     origin:'*', 
-//     credentials:true,            //access-control-allow-credentials:true
-//     optionSuccessStatus:200
-// }
-
-
 
 //----------middleware-------------------------
-app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");   
-    res.setHeader( "Access-Control-Allow-Methods", "OPTIONS, PUT, POST, GET, DELETE" );
-    next();
-  });
-
-// app.use(cors({
-//     origin: "http://localhost:3000"
-// }));
+// app.use(function(req, res, next) {
+//     res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");   
+//     res.setHeader( "Access-Control-Allow-Methods", "OPTIONS,HEAD, PUT, POST, GET, DELETE" );
+//     next();
+//   });
 
 app.use(express.json());
 app.use(cors());
-// app.use(cors({
-//     origin:['http://localhost:3000', 'https://livestock-api.herokuapp.com'],
-//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-// }));
 
- 
-// app.use(cors(corsOptions));
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);
 app.use('/comp/permits', complianceRoute);
 app.use('/finance', financeRoute);
 
-// app.use(function (req, res, next){
-//     res.header("Access-Control-Allow-Origin","http://localhost:3000"); //or specify with your domain i.e http://localhost:3000
-//     res.header("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// })
 
 // Default Route
 app.get('/', (req,res) =>{
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET" ); 
-    
+   
     res.send('Server is Working!')
 });
 
