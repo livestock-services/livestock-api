@@ -5,6 +5,30 @@ const { APAs, Ps } = require("../models/Compliance");
 const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
 
+app.options('/allCompReports', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
+
+  app.options('/allAmendedPermitApplications', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
+
+
+  app.options('/allPermitApplications', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
+
+
+  
 
 
 router.get('/', async (req,res)=>{
@@ -164,6 +188,19 @@ router.put('/allPermitApplications/:id', async (req,res,next )=>{
 
  //---------------------------------------------------PERMITS------------------------------------//
 
+ app.options('/allPermits', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
+
+  app.options('/addNewPermit', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.end();
+  });
 
  //----------ADD A PERMIT-----//
 
