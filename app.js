@@ -9,17 +9,22 @@ const procurementRoute = require('./routes/procurement');
 const complianceRoute = require('./routes/compliance');
 const financeRoute = require('./routes/finance');
 
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 
 //----------middleware-------------------------
-// app.use(function(req, res, next) {
-//     res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-//     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");   
-//     res.setHeader( "Access-Control-Allow-Methods", "OPTIONS,HEAD, PUT, POST, GET, DELETE" );
-//     next();
-//   });
+//  app.use(function(req, res, next) {
+//      res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Origin");   
+//      res.header( "Access-Control-Allow-Methods", "OPTIONS,HEAD, PUT, POST, GET, DELETE" );
+//      next();
+//    });
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use('/auth', authRoute);
 app.use('/pfis', procurementRoute);

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Compliance = require('../models/Compliance');
-const { APAs } = require("../models/Compliance");
+const { APAs, Ps } = require("../models/Compliance");
 const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
 
@@ -13,7 +13,7 @@ router.get('/', async (req,res)=>{
 
 });
 
-//GET ALL PFIs
+//---------------------------GET ALL PFIs----------------------------------//
 router.get('/allCompReports', async (req,res)=>{
 
     try {
@@ -31,7 +31,7 @@ router.get('/allCompReports', async (req,res)=>{
  });
 
 
- //GET ALL AMENDED PERMIT APPLICATIONS
+ //-------------------GET ALL AMENDED PERMIT APPLICATIONS------------------------//
 router.get('/allAmendedPermitApplications', async (req,res)=>{
 
     try {
@@ -48,7 +48,9 @@ router.get('/allAmendedPermitApplications', async (req,res)=>{
     }
  });
 
- //CREATE NEW AMENDED PERMIT APPLICATION
+ //---------------------------AMENDED PERMIT APPLICATIONS----------------------------//
+
+ //------CREATE NEW AMENDED PERMIT APPLICATION----//
 router.post('/addNewAmendedPermitApplication', async (req,res) => {
     
     try {  
@@ -78,10 +80,10 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
 
 
 
+//--------------------------------- PERMIT APPLICATIONS -----------------------------------------//
 
 
-
- //GET ALL PERMIT APPLICATIONS
+ //-----GET ALL PERMIT APPLICATIONS-----//
  router.get('/allPermitApplications', async (req,res)=>{
 
     try {
@@ -98,7 +100,7 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
     }
  });
 
- //CREATE NEW PERMIT APPLICATION
+ //-----CREATE NEW PERMIT APPLICATION-------//
 router.post('/addNewPermitApplication', async (req,res) => {
     
     try {  
@@ -139,7 +141,7 @@ router.post('/addNewPermitApplication', async (req,res) => {
 
 
 
-//UPDATE A PERMIT APPLICATION
+//--------UPDATE A PERMIT APPLICATION------//
 router.put('/allPermitApplications/:id', async (req,res,next )=>{
     try {
         const approvedPA = await PAs.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
@@ -153,6 +155,56 @@ router.put('/allPermitApplications/:id', async (req,res,next )=>{
             })
         })
        
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+
+ //---------------------------------------------------PERMITS------------------------------------//
+
+
+ //----------ADD A PERMIT-----//
+
+router.post('/addNewPermit', async (req,res) => {
+    
+    try {  
+       const newPermit = new Ps({
+       
+       
+       pfiNumber: req.body.pfiNumber,
+       permitNumber:req.body.permitNumber,
+       supplierName: req.body.supplierName        
+       });
+
+          
+    
+       console.log( newPermit );
+      
+      const savedPermit = await newPermit.save();
+        console.log(savedPermit);
+            res.json({
+               
+                Message: 'Successfully added a new Permit!',
+                data: savedPermit
+            });
+        } catch (err) {
+             res.json({ message: err })
+        }
+});
+
+//-----GET ALL PERMITS-----//
+router.get('/allPermits', async (req,res)=>{
+
+    try {
+        const allPermits = await Ps.find();
+        res.json({
+
+            status: 'Successfully retreived all Permits!',
+            data: allPermits
+            
+        });
  
     } catch (error) {
         res.json({ message: error})
