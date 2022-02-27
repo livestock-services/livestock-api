@@ -4,17 +4,17 @@ const Compliance = require('../models/Compliance');
 const { APAs, Ps } = require("../models/Compliance");
 const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
+const cors = require('cors');
 
 
-
-router.get('/', async (req,res)=>{
+router.get('/', cors(), async (req,res)=>{
 
     res.send('Compliance Route is grafting!');
 
 });
 
 //---------------------------GET ALL PFIs----------------------------------//
-router.get('/allCompReports', async (req,res)=>{
+router.get('/allCompReports', cors(), async (req,res)=>{
 
     try {
         const allCompReports = await Compliance.find();
@@ -32,7 +32,7 @@ router.get('/allCompReports', async (req,res)=>{
 
 
  //-------------------GET ALL AMENDED PERMIT APPLICATIONS------------------------//
-router.get('/allAmendedPermitApplications', async (req,res)=>{
+router.get('/allAmendedPermitApplications', cors(), async (req,res)=>{
 
     try {
         const allAmendedPermitApplications = await APAs.find();
@@ -51,7 +51,7 @@ router.get('/allAmendedPermitApplications', async (req,res)=>{
  //---------------------------AMENDED PERMIT APPLICATIONS----------------------------//
 
  //------CREATE NEW AMENDED PERMIT APPLICATION----//
-router.post('/addNewAmendedPermitApplication', async (req,res) => {
+router.post('/addNewAmendedPermitApplication', cors(), async (req,res) => {
     
     try {  
        const newAmendedPermitApplication = new APAs({
@@ -84,7 +84,7 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
 
 
  //-----GET ALL PERMIT APPLICATIONS-----//
- router.get('/allPermitApplications', async (req,res)=>{
+ router.get('/allPermitApplications', cors(), async (req,res)=>{
 
     try {
         const allPermitApplications = await PAs.find();
@@ -101,7 +101,7 @@ router.post('/addNewAmendedPermitApplication', async (req,res) => {
  });
 
  //-----CREATE NEW PERMIT APPLICATION-------//
-router.post('/addNewPermitApplication', async (req,res) => {
+router.post('/addNewPermitApplication', cors(), async (req,res) => {
     
     try {  
        const newPermitApplication = new PAs({
@@ -142,7 +142,7 @@ router.post('/addNewPermitApplication', async (req,res) => {
 
 
 //--------UPDATE A PERMIT APPLICATION------//
-router.put('/allPermitApplications/:id', async (req,res,next )=>{
+router.put('/allPermitApplications/:id', cors(), async (req,res,next )=>{
     try {
         const approvedPA = await PAs.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
             PAs.findOne({ _id: req.params.id }).then(function(){
@@ -167,7 +167,7 @@ router.put('/allPermitApplications/:id', async (req,res,next )=>{
 
  //----------ADD A PERMIT-----//
 
-router.post('/addNewPermit', async (req,res) => {
+router.post('/addNewPermit', cors(), async (req,res) => {
     
     try {  
        const newPermit = new Ps({
@@ -195,7 +195,7 @@ router.post('/addNewPermit', async (req,res) => {
 });
 
 //-----GET ALL PERMITS-----//
-router.get('/allPermits', async (req,res)=>{
+router.get('/allPermits', cors(), async (req,res)=>{
 
     try {
         const allPermits = await Ps.find();
