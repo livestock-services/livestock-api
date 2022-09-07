@@ -13,7 +13,7 @@ const financeRoute = require('./routes/finance');
 
 //----------middleware-------------------------
 
-app.use(cors({origin: 'https://livestock-permit-tracker.herokuapp.com, http://localhost:3000'}));
+app.use(cors({origin: '*'}));
 app.use(express.json());
 
 app.use('/auth', authRoute);
