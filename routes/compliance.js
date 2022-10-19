@@ -109,7 +109,6 @@ router.post('/addNewPermitApplication', cors(), async (req,res) => {
        
        supplierName: req.body.supplierName,
        pfiNumber:req.body.pfiNumber,
-
        selectCurrency: req.body.selectCurrency,  
        pfiValue: req.body.pfiValue,
        feeType: req.body.feeType,

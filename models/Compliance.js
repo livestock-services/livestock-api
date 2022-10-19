@@ -6,7 +6,7 @@ const tz = require ('moment-timezone')
 const AmendedPermitApplications = new mongoose.Schema({
 
         pfiNumber:{
-                type: Number,
+                type: String,
                 required: true
             },
 
@@ -32,7 +32,7 @@ const AmendedPermitApplications = new mongoose.Schema({
 const Permits = new mongoose.Schema({
 
         pfiNumber:{
-                type: Number,
+                type: String,
                 required: true
             },
 
