@@ -126,7 +126,7 @@ const PermitApplications = new mongoose.Schema({
     permitStatus:{
        
             type: String,
-            default: "Pending"
+            default: "PA in motion, awaiting Finance Approval"
         
 
     }

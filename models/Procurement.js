@@ -5,22 +5,21 @@ const luxon = require ('luxon')
 
 
 const ProcurementSchema = new mongoose.Schema({
-        purchaseOrderNumber:{
-            type: Number,
-            required: true
-        },
-        pfiNumber:{
-            type: Number,
-            required: true
-        },
+
         supplierName:{
             type: String,
             required: true
         },
-        supplierEmail:{
+        purchaseOrderNumber:{
+            type:String,
+            required: true
+        },
+        pfiNumber:{
             type: String,
             required: true
         },
+       
+       
         date: {         
             type:String,
           // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
@@ -30,18 +29,10 @@ const ProcurementSchema = new mongoose.Schema({
         },
 
         status:{
-            
-               procurement:{
+              
                 type: String,
-                default:'Sent to Compliance'
-               },
-
-               compliance:{
-                type: String,
-                default:'Received from Procurement'
-               }
-           
-           
+                default:'New PFI added, awaiting acknowledgement'
+          
         }
         
         
