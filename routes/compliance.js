@@ -182,6 +182,28 @@ router.put('/acknowledgePfi/:id', cors(), async (req,res,next )=>{
     }
  });
 
+
+  //--------RECEIVE PERMIT FROM AUTH BODY------//
+router.put('/receivePermit/:id', cors(), async (req,res,next )=>{
+    try {
+        const receivedPermit = await PAs.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
+            PAs.findOne({ _id: req.params.id }).then(function(){
+                res.json({
+
+                    status: 'Successfully received permit!',
+                    data: receivedPermit
+                    
+                })
+            })
+        })
+       
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+
  //---------------------------------------------------PERMITS------------------------------------//
 
 
