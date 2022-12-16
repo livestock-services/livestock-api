@@ -12,15 +12,55 @@ const ProcurementSchema = new mongoose.Schema({
         },
         purchaseOrderNumber:{
             type:String,
-            required: true
+            
         },
         pfiNumber:{
             type: String,
-            required: true
+           
+        },
+
+        date: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
         },
        
        
-        date: {         
+       stageOneDate: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
+        },
+
+        stageTwoDate: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
+        },
+
+        stageThreeDate: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
+        },
+
+        stageFourDate: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
+        },
+
+        stageFiveDate: {         
             type:String,
           // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
           default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 

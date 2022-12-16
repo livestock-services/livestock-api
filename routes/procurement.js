@@ -16,6 +16,8 @@ router.get('/allPfis', async (req,res)=>{
 
     try {
         const allPfis = await Procurement.find();
+
+        
         res.json({
 
             status: 'Successfully retreived PFIs!',
@@ -32,6 +34,9 @@ router.get('/allPfis', async (req,res)=>{
  //CREATE NEW PFIs
 router.post('/addNewPfi', async (req,res) => {
     
+    const updatedDate = new Date()
+
+    const newDate = updatedDate.toLocaleDateString();
      try {  
         const newPfi = new Procurement({
         
@@ -39,7 +44,13 @@ router.post('/addNewPfi', async (req,res) => {
         pfiNumber: req.body.pfiNumber,
         supplierName: req.body.supplierName,
         supplierEmail: req.body.supplierEmail,
-        issuedDate: req.body.date,
+        issuedDate: newDate,
+        stageOneDate:req.body.stageOneDate,
+        stageTwoDate:req.body.stageTwoDate,
+        stageThreeDate:req.body.stageThreeDate,
+        stageFourDate:req.body.stageFourDate,
+        stageFiveDate:req.body.stageFiveDate,
+        
         status: req.body.status
                 
         });
