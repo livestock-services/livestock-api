@@ -27,7 +27,13 @@ const ProcurementSchema = new mongoose.Schema({
           // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
         },
        
-       
+        pfiDate: {         
+            type:String,
+          // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
+          default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+          
+          // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
+        },
        stageOneDate: {         
             type:String,
           // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
