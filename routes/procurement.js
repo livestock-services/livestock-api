@@ -34,9 +34,9 @@ router.get('/allPfis', async (req,res)=>{
  //CREATE NEW PFIs
 router.post('/addNewPfi', async (req,res) => {
     
-    const updatedDate = new Date()
+    req.body.date = new Date()
 
-    const newDate = updatedDate.toLocaleDateString();
+    const newDate =  (req.body.date).toLocaleDateString();
      try {  
         const newPfi = new Procurement({
         

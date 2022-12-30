@@ -72,10 +72,10 @@ router.get('/User/:id', async (req,res)=>{
 
       
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-        res.header('auth-token',token).send({ message: `Logged in as ${req.body.role} !`,
+        res.header('auth-token',token).send({ message: `Logged in ${user.name} !`,
           name:user.name, id: user._id, role: user.role, token: token});
  
-       res.send('Logged In ');
+      // res.send(`Logged In as ${user.name}`);
         
 
 
