@@ -43,9 +43,9 @@ const conn = mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser:true, us
 
 
 
-const port = process.env.PORT || 82 ;
+const port = process.env.PORT || 84 ;
 if (port == null || port == "") {
-    port= 5008;
+    port= 5010;
 }
 
 app.listen(port, () =>
