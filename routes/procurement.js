@@ -35,8 +35,20 @@ router.get('/allPfis', async (req,res)=>{
 router.post('/addNewPfi', async (req,res) => {
     
     req.body.date = new Date()
+    req.body.pfiDate = new Date()
+    req.body.stageOneDate = new Date()
+    req.body.stageTwoDate = "No date yet"
+    req.body.stageThreeDate = "No date yet"
+    req.body.stageFourDate = "No date yet"
+    req.body.stageFiveDate = "No date yet"
 
-    const newDate =  (req.body.date).toLocaleDateString();
+    const newDate =  (req.body.date).toLocaleDateString('en-GB');
+    const newPfiDate =  (req.body.pfiDate).toLocaleDateString('en-GB');
+    const newStageOneDate =  (req.body.stageOneDate).toLocaleDateString('en-GB');
+    const newStageTwoDate =  (req.body.stageTwoDate);
+    const newStageThreeDate =  (req.body.stageThreeDate);
+    const newStageFourDate =  (req.body.stageFourDate);
+    const newStageFiveDate =  (req.body.stageFiveDate);
      try {  
         const newPfi = new Procurement({
         
@@ -44,13 +56,13 @@ router.post('/addNewPfi', async (req,res) => {
         pfiNumber: req.body.pfiNumber,
         supplierName: req.body.supplierName,
         supplierEmail: req.body.supplierEmail,
-        issuedDate: newDate,
-        pfiDate:req.body.pfiDate,
-        stageOneDate:req.body.stageOneDate,
-        stageTwoDate:req.body.stageTwoDate,
-        stageThreeDate:req.body.stageThreeDate,
-        stageFourDate:req.body.stageFourDate,
-        stageFiveDate:req.body.stageFiveDate,
+        date:newDate,
+        pfiDate:newPfiDate,
+        stageOneDate:newStageOneDate,
+        stageTwoDate:newStageTwoDate,
+        stageThreeDate:newStageThreeDate,
+        stageFourDate:newStageFourDate,
+        stageFiveDate:newStageFiveDate,
         
         status: req.body.status
                 
