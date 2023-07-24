@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Procurement = require('../models/Procurement');
+const Supplier = require ('../models/Supplier');
 const verify = require('./verifyToken')
 
 
@@ -83,5 +84,49 @@ router.post('/addNewPfi', async (req,res) => {
               res.json({ message: err })
          }
 });
+
+
+//GET ALL PFIs
+router.get('/allSuppliers', async (req,res)=>{
+
+    try {
+        const allSuppliers = await Supplier.find();
+
+        
+        res.json({
+
+            status: 'Successfully retreived all Suppliers!',
+            data: allSuppliers
+            
+        });
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+router.post('/addNewSupplier', async (req,res) => {
+    req.body.date = new Date();
+    const newDate = (req.body.date).toLocaleDateString('en-GB'); 
+    try {  
+        const newSupplier = new Supplier({
+            supplierName:req.body.supplierName,
+            date:newDate
+        });
+
+        const savedSupplier = await newSupplier.save();
+        console.log(savedSupplier);
+            res.json({
+               
+                Message: 'Successfully added a new supplier !',
+                data: savedSupplier
+            });
+
+    }catch (err) {
+            res.json({ message: err })
+       }
+    
+});
+
 
 module.exports= router
