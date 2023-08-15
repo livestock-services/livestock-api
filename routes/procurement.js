@@ -56,7 +56,7 @@ router.post('/addNewPfi', async (req,res) => {
         purchaseOrderNumber: req.body.purchaseOrderNumber,
         pfiNumber: req.body.pfiNumber,
         supplierName: req.body.supplierName,
-        supplierEmail: req.body.supplierEmail,
+        supplierComment: req.body.supplierComment,
         date:newDate,
         pfiDate:newPfiDate,
         stageOneDate:newStageOneDate,
@@ -127,6 +127,26 @@ router.post('/addNewSupplier', async (req,res) => {
        }
     
 });
+
+router.delete('/allPfis/:id', async (req,res)=>{
+
+    try {
+        const deletedPFI = await Procurement.findByIdAndDelete({ _id: req.params.id }, req.body).then(function(){
+            Procurement.findOne({ _id: req.params.id }).then(function(){
+                res.json({
+
+                    status: 'Successfully deleted the PFI Record!',
+                    data: deletedPFI
+                    
+                })
+            })
+        })
+       
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
 
 
 module.exports= router

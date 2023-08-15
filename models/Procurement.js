@@ -10,6 +10,11 @@ const ProcurementSchema = new mongoose.Schema({
             type: String,
             required: true
         },
+
+        supplierComment:{
+          type:String
+        },
+        
         purchaseOrderNumber:{
             type:String,
             
