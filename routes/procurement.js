@@ -36,34 +36,42 @@ router.get('/allPfis', async (req,res)=>{
 router.post('/addNewPfi', async (req,res) => {
     
     req.body.date = new Date()
+    req.body.newRecordAddedDate = new Date()
     req.body.pfiDate = new Date()
-    req.body.stageOneDate = new Date()
+    req.body.stageOneDate = "No date yet"
     req.body.stageTwoDate = "No date yet"
     req.body.stageThreeDate = "No date yet"
     req.body.stageFourDate = "No date yet"
     req.body.stageFiveDate = "No date yet"
+    req.body.stageSixDate = "No date yet"
 
     const newDate =  (req.body.date).toLocaleDateString('en-GB');
+    const newRecordAddedDate = (req.body.newRecordAddedDate).toLocaleDateString('en-GB');
     const newPfiDate =  (req.body.pfiDate).toLocaleDateString('en-GB');
-    const newStageOneDate =  (req.body.stageOneDate).toLocaleDateString('en-GB');
+    const newStageOneDate =  (req.body.stageOneDate);
     const newStageTwoDate =  (req.body.stageTwoDate);
     const newStageThreeDate =  (req.body.stageThreeDate);
     const newStageFourDate =  (req.body.stageFourDate);
     const newStageFiveDate =  (req.body.stageFiveDate);
+    const newStageSixDate =  (req.body.stageSixDate);
      try {  
         const newPfi = new Procurement({
         
         purchaseOrderNumber: req.body.purchaseOrderNumber,
         pfiNumber: req.body.pfiNumber,
+        pfiComments:req.body.pfiComments,
+        pfiComplianceComments: req.body.pfiComplianceComments,
         supplierName: req.body.supplierName,
         supplierComment: req.body.supplierComment,
         date:newDate,
+        newRecordAddedDate: newRecordAddedDate,
         pfiDate:newPfiDate,
         stageOneDate:newStageOneDate,
         stageTwoDate:newStageTwoDate,
         stageThreeDate:newStageThreeDate,
         stageFourDate:newStageFourDate,
         stageFiveDate:newStageFiveDate,
+        stageSixDate:newStageSixDate,
         
         status: req.body.status
                 

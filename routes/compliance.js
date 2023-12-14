@@ -6,6 +6,7 @@ const { PAs } = require("../models/Compliance");
 const verify = require('./verifyToken')
 const cors = require('cors');
 const Procurement = require('../models/Procurement');
+const Supplier = require('../models/Supplier');
 
 
 router.get('/', cors(), async (req,res)=>{
@@ -171,6 +172,27 @@ router.put('/acknowledgePfi/:id', cors(), async (req,res,next )=>{
 
                     status: 'Successfully Acknowledged PFI!',
                     data: acknowledgedPA
+                    
+                })
+            })
+        })
+       
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+
+  //--------ACKNOWLEDGE RECEIPT OF PFIs FROM PROCUREMENT------//
+router.put('/updateSupplier/:id', cors(), async (req,res,next )=>{
+    try {
+        const updatedSupplier = await Supplier.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
+            Supplier.findOne({ _id: req.params.id }).then(function(){
+                res.json({
+
+                    status: 'Successfully Updated Supplier!',
+                    data: updatedSupplier
                     
                 })
             })
