@@ -157,4 +157,25 @@ router.delete('/allPfis/:id', async (req,res)=>{
  });
 
 
+ router.delete('/allSuppliers/:id', async (req,res)=>{
+
+    try {
+        const deletedSupplier = await Supplier.findByIdAndDelete({ _id: req.params.id }, req.body).then(function(){
+            Supplier.findOne({ _id: req.params.id }).then(function(){
+                res.json({
+
+                    status: 'Successfully deleted the PFI Record!',
+                    data: deletedSupplier
+                    
+                })
+            })
+        })
+       
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+
 module.exports= router
